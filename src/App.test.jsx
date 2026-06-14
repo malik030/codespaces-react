@@ -2,8 +2,11 @@ import { expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders the UPIME workflow', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeDefined();
+  expect(screen.getByRole('main')).toBeDefined();
+  expect(screen.getAllByText(/UPIME/i).length).toBeGreaterThan(0);
+  expect(screen.getByLabelText(/Gemini API key/i)).toBeDefined();
+  expect(screen.getByRole('button', { name: /Suggest related courses/i })).toBeDefined();
+  expect(screen.getByText(/Scraped public university data/i)).toBeDefined();
 });
