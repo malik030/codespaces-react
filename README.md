@@ -1,70 +1,60 @@
-# GitHub Codespaces ♥️ React
+# Upime
 
-Welcome to your shiny new Codespace running React! We've got everything fired up and running for you to explore React.
+Upime is a Vite + React web application for researching public sector university
+courses. A student enters a country, degree interest, and their own Gemini API
+key. The app asks Gemini to suggest related courses first, then uses a grounded
+research prompt to return structured public-university course data.
 
-You've got a blank canvas to work on from a git perspective as well. There's a single initial commit with the what you're seeing right now - where you go from here is up to you!
+## What it does
 
-Everything you do here is contained within this one codespace. There is no repository on GitHub yet. If and when you’re ready you can click "Publish Branch" and we’ll create your repository and push up your project. If you were just exploring then and have no further need for this code then you can simply delete your codespace and it's gone forever.
+- Accepts a Gemini API key from the user in the browser.
+- Suggests degree-related course/program options before scraping.
+- Researches public sector universities for the selected country and course.
+- Displays medium of instruction, admission opening date, application fee,
+  university/tuition fee, official source URL, source notes, and confidence.
+- Shows results as mobile-friendly cards and a desktop table.
+- Exports scraped rows to CSV.
+- Uses a green, black, and white responsive interface.
 
-This project was bootstrapped for you with [Vite](https://vitejs.dev/).
+## Privacy note
 
-## Available Scripts
+The Gemini API key is kept only in React state for the current browser session.
+It is not stored in local storage, cookies, or this repository.
 
-In the project directory, you can run:
+## Data accuracy note
 
-### `npm start`
+University websites change frequently and some admissions or fee pages may not
+publish all fields. Upime asks Gemini to use official sources where possible and
+to mark unavailable values as `Not published`, but users should verify critical
+admission and fee details on the linked official university pages before applying.
 
-We've already run this for you in the `Codespaces: server` terminal window below. If you need to stop the server for any reason you can just run `npm start` again to bring it back online.
+## Run locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000/](http://localhost:3000/) in the built-in Simple Browser (`Cmd/Ctrl + Shift + P > Simple Browser: Show`) to view your running application.
+```bash
+npm install
+npm start
+```
 
-The page will reload automatically when you make changes.\
-You may also see any lint errors in the console.
+Open <http://localhost:3000/>.
 
-### `npm test`
+## Test and build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm test -- --run
+npm run build
+```
 
-### `npm run build`
+## Using the app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Paste your Gemini API key.
+2. Enter the country to search.
+3. Enter your degree or study interest.
+4. Click **Suggest related courses**.
+5. Pick or manually edit the course focus.
+6. Click **Scrape public universities**.
+7. Review caveats, source links, and confidence before exporting CSV.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Gemini model
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-You can learn more in the [Vite documentation](https://vitejs.dev/guide/).
-
-To learn Vitest, a Vite-native testing framework, go to [Vitest documentation](https://vitest.dev/guide/)
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://sambitsahoo.com/blog/vite-code-splitting-that-works.html](https://sambitsahoo.com/blog/vite-code-splitting-that-works.html)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://github.com/btd/rollup-plugin-visualizer#rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer#rollup-plugin-visualizer)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://dev.to/hamdankhan364/simplifying-progressive-web-app-pwa-development-with-vite-a-beginners-guide-38cf](https://dev.to/hamdankhan364/simplifying-progressive-web-app-pwa-development-with-vite-a-beginners-guide-38cf)
-
-### Advanced Configuration
-
-This section has moved here: [https://vitejs.dev/guide/build.html#advanced-base-options](https://vitejs.dev/guide/build.html#advanced-base-options)
-
-### Deployment
-
-This section has moved here: [https://vitejs.dev/guide/build.html](https://vitejs.dev/guide/build.html)
-
-### Troubleshooting
-
-This section has moved here: [https://vitejs.dev/guide/troubleshooting.html](https://vitejs.dev/guide/troubleshooting.html)
+The default model is `gemini-2.0-flash`. You can edit the model field in the UI
+if your Gemini account supports another model.
