@@ -1,70 +1,62 @@
-# GitHub Codespaces ♥️ React
+# UPIME
 
-Welcome to your shiny new Codespace running React! We've got everything fired up and running for you to explore React.
+UPIME is a React/Vite web application for students who want to discover public sector university programs by starting with one degree idea.
 
-You've got a blank canvas to work on from a git perspective as well. There's a single initial commit with the what you're seeing right now - where you go from here is up to you!
+The app uses the user's Gemini API key in the browser to:
 
-Everything you do here is contained within this one codespace. There is no repository on GitHub yet. If and when you’re ready you can click "Publish Branch" and we’ll create your repository and push up your project. If you were just exploring then and have no further need for this code then you can simply delete your codespace and it's gone forever.
+1. Suggest related course and program names for the degree.
+2. Research public sector university admission sources for a selected country.
+3. Normalize scraped/admissions data into a readable comparison table.
+4. Export filtered results to CSV.
 
-This project was bootstrapped for you with [Vite](https://vitejs.dev/).
+## Data fields
 
-## Available Scripts
+UPIME asks Gemini to prioritize official public university websites, official admission portals, prospectuses, and government higher education sources. Each row includes:
 
-In the project directory, you can run:
+- University name and public sector status
+- Course/program name and degree level
+- Medium of instruction
+- Admission opening date and intake/deadline
+- Application fee
+- University/tuition fee
+- Official source link
+- Confidence and verification notes
 
-### `npm start`
+Admissions dates and fees change often. Always verify important fields from the linked official source before applying.
 
-We've already run this for you in the `Codespaces: server` terminal window below. If you need to stop the server for any reason you can just run `npm start` again to bring it back online.
+## Gemini API key
 
-Runs the app in the development mode.\
-Open [http://localhost:3000/](http://localhost:3000/) in the built-in Simple Browser (`Cmd/Ctrl + Shift + P > Simple Browser: Show`) to view your running application.
+The app asks the user to paste a Gemini API key. The key is only kept in React state for the current browser session and is not saved to local storage or committed into the project.
 
-The page will reload automatically when you make changes.\
-You may also see any lint errors in the console.
+## Available scripts
 
-### `npm test`
+Install dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+Run the development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Run tests:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm test -- --run
+```
 
-## Learn More
+Build for production:
 
-You can learn more in the [Vite documentation](https://vitejs.dev/guide/).
+```bash
+npm run build
+```
 
-To learn Vitest, a Vite-native testing framework, go to [Vitest documentation](https://vitest.dev/guide/)
+## Tech stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://sambitsahoo.com/blog/vite-code-splitting-that-works.html](https://sambitsahoo.com/blog/vite-code-splitting-that-works.html)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://github.com/btd/rollup-plugin-visualizer#rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer#rollup-plugin-visualizer)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://dev.to/hamdankhan364/simplifying-progressive-web-app-pwa-development-with-vite-a-beginners-guide-38cf](https://dev.to/hamdankhan364/simplifying-progressive-web-app-pwa-development-with-vite-a-beginners-guide-38cf)
-
-### Advanced Configuration
-
-This section has moved here: [https://vitejs.dev/guide/build.html#advanced-base-options](https://vitejs.dev/guide/build.html#advanced-base-options)
-
-### Deployment
-
-This section has moved here: [https://vitejs.dev/guide/build.html](https://vitejs.dev/guide/build.html)
-
-### Troubleshooting
-
-This section has moved here: [https://vitejs.dev/guide/troubleshooting.html](https://vitejs.dev/guide/troubleshooting.html)
+- React 18
+- Vite
+- Vitest
+- Gemini REST API
